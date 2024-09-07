@@ -30,12 +30,13 @@ fn print_account(account: Account) {
     print!("{:#?}", account);
 }
 fn main() {
+    // create a variable bank, and assign it a new Bank
     let bank = Bank::new();
-    let account = Account::new(
-        1,
-        String::from("me")
-    );
+    
+    // create another variable and assign it to the bank (move the bank value to the other_bank)
+    // this is an error. every value is owned by a single variable at a time
+    // reassigning to another variable moves the value. you cannot acces the old value
+    let other_bank = bank;
 
-    print_account(account);
-    print_account(account);
+    println!("{:#?}", bank);
 }
