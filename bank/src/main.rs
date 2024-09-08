@@ -30,9 +30,11 @@ fn print_account(account: Account) {
     print!("{:#?}", account);
 }
 fn main() {
-   let account = Account::new(1, String::from("me"));
+   let bank = Bank::new();
+   
+   // example of a field in a struct owning a value.
+   let accounts = bank.accounts;
 
-   let list_of_accounts = vec![account];
+   println!("{:#?}", bank.accounts);
 
-   println!("{:#?}", account);
 }
