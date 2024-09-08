@@ -30,11 +30,14 @@ fn print_account(account: Account) {
     print!("{:#?}", account);
 }
 fn main() {
-   let bank = Bank::new();
-   
-   // example of a field in a struct owning a value.
-   let accounts = bank.accounts;
+   let account = Account::new(
+    1,
+    String::from("me")
+   );
 
-   println!("{:#?}", bank.accounts);
+   // another example of ownership.
+   print_account(account);
+
+   println!("{}", account.holder)
 
 }
