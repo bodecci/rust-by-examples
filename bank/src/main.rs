@@ -26,22 +26,25 @@ impl Bank {
     }
 }
 
-fn print_account(account: Account) {
+fn print_account(account: Account) -> Account {
     print!("{:#?}", account);
+    account
 }
 
 fn print_holder(holder: String) {
     println!("{}", holder);
 }
 fn main() {
-   let account = Account::new(
+   let mut account = Account::new(
     1,
     String::from("me")
    );
-
-   // example of use of partially moved value: `account`
-   print_holder((account.holder));
    
-   print_account(account);
+   //manually move values back and forth btw diff owners.
+   // this is tedious.
+   account = print_account(account);
+   account = print_account(account);
+
+   println!("{:#?}", account)
 
 }
