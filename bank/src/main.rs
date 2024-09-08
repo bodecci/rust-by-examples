@@ -29,15 +29,19 @@ impl Bank {
 fn print_account(account: Account) {
     print!("{:#?}", account);
 }
+
+fn print_holder(holder: String) {
+    println!("{}", holder);
+}
 fn main() {
    let account = Account::new(
     1,
     String::from("me")
    );
 
-   // another example of ownership.
+   // example of use of partially moved value: `account`
+   print_holder((account.holder));
+   
    print_account(account);
-
-   println!("{}", account.holder)
 
 }
