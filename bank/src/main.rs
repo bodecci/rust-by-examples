@@ -30,23 +30,24 @@ fn print_account(account: &Account) {
     print!("{:#?}", account);
 }
 
+// I can uodate the value using ref mut
+fn change_account(account: &mut Account) {
+    account.balance = 10;
+
+}
+
 
 fn main() {
-   let account = Account::new(
+   let mut account = Account::new(
     1,
     String::from("me")
    );
 
-   // reference the account. borrow concept
-   let account_ref1 = &account;
-   let account_ref2 = &account;
+   // in the lines below, I cannot read a value and attempt to update that value at the same time.
+   let account_ref = &account;
 
-   // cannot move a value while references to it exists
-   let other_account = account;
-
-   print_account(account_ref1);
-   print_account(account_ref2);
+   change_account(&mut account);
  
-   println!("{:#?}", account)
+   println!("{:#?}", account_ref.holder)
 
 }
