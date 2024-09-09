@@ -38,9 +38,14 @@ fn main() {
    );
 
    // reference the account. borrow concept
-   let account_ref = &account;
+   let account_ref1 = &account;
+   let account_ref2 = &account;
 
-   print_account((account_ref));
+   // cannot move a value while references to it exists
+   let other_account = account;
+
+   print_account(account_ref1);
+   print_account(account_ref2);
  
    println!("{:#?}", account)
 
