@@ -26,25 +26,22 @@ impl Bank {
     }
 }
 
-fn print_account(account: Account) -> Account {
+fn print_account(account: &Account) {
     print!("{:#?}", account);
-    account
 }
 
-fn print_holder(holder: String) {
-    println!("{}", holder);
-}
+
 fn main() {
-   let mut account = Account::new(
+   let account = Account::new(
     1,
     String::from("me")
    );
-   
-   //manually move values back and forth btw diff owners.
-   // this is tedious.
-   account = print_account(account);
-   account = print_account(account);
 
+   // reference the account. borrow concept
+   let account_ref = &account;
+
+   print_account((account_ref));
+ 
    println!("{:#?}", account)
 
 }
