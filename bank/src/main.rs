@@ -38,16 +38,13 @@ fn change_account(account: &mut Account) {
 
 
 fn main() {
-   let mut account = Account::new(
-    1,
-    String::from("me")
-   );
 
-   // in the lines below, I cannot read a value and attempt to update that value at the same time.
-   let account_ref = &account;
+    // some types of values are copied instead of moved. 
+    // numbers, bool, char, arrays, tuples, references are types that are copied and not moved
+   let num = 5;
 
-   change_account(&mut account);
+   let other_num = num;
  
-   println!("{:#?}", account_ref.holder)
+   println!("{:#?}", num)
 
 }
