@@ -23,6 +23,10 @@ impl Account {
         self.balance -= amount;
         self.balance
     }
+
+    fn summary(&self) -> String {
+        format!("{} has a balance of {}", self.holder, self.balance)
+    }
 }
 
 #[derive(Debug)]
@@ -45,8 +49,11 @@ fn main() {
 let mut bank = Bank::new();
 let mut account = Account::new(1, String::from("me"));
 
- account.deposit(500);
- account.withdrawal(250);
+account.deposit(500);
+account.withdrawal(250);
+
+println!("{}", account.summary());
+
 bank.add_account(account);
 
 println!("{:#?}", bank)
