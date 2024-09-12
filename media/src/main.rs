@@ -40,12 +40,9 @@ fn main() {
         author: String::from("Bad Author"), 
     };
 
-    println!("{}", audiobook.description());
-    println!("{}", good_movie.description());
-    println!("{}", bad_book.description());
+    println!("{:#?}", audiobook.description());
+    println!("{:#?}", good_movie.description());
+    println!("{:#?}", bad_book.description());
 
-    print_media(audiobook);
-    print_media(good_movie);
-    print_media(bad_book);
 
 }
