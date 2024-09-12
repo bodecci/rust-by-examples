@@ -14,6 +14,17 @@ fn main() {
     let audiobook = Media::Audiobook { 
         title: String::from("An Audiobook"),
     };
+    let good_movie = Media::Movie {
+        title: String::from("Good Movie"),
+        director: String::from("Good director")
+    };
+    let bad_book = Media::Book { 
+        title: String::from("Bad Book"),
+        author: String::from("Bad Author"), 
+    };
 
     print_media(audiobook);
+    print_media(good_movie);
+    print_media(bad_book);
+
 }
