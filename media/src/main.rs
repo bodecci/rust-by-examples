@@ -1,3 +1,5 @@
+use std::collections::btree_map::Values;
+
 
 #[derive(Debug)]
 enum Media {
@@ -57,11 +59,28 @@ impl Catalog {
     fn add(&mut self, media: Media) {
         self.items.push(media)
     }
+
+    fn get_by_index(&self, index: usize) -> MightHaveAValue {
+
+        if self.items.len() > index {
+            MightHaveAValue::ThereIsAValue(&self.items[index])
+        } else {
+            MightHaveAValue::NoValueAvailable
+        }
+        
+    }
+
+    fn print_media(media: Media) {
+        println!("{:#?}", media)
+    }
 }
 
-fn print_media(media: Media) {
-    println!("{:#?}", media)
+enum MightHaveAValue<'a> {
+    ThereIsAValue(&'a Media),
+    NoValueAvailable
 }
+
+
 
 fn main() {
     let audiobook = Media::Audiobook { 
@@ -90,19 +109,17 @@ fn main() {
     catalog.add(podcast);
     catalog.add(placeholder);
 
-    // running catalog.items.get(0), give an output with the built in Some like
-    // Some(
-    //    Audiobook { title: "An Audiobook", to take the some away, one needs to account for it with the pattern
-    // matching
-    match catalog.items.get(100) {
-        //Some(value)
-        Some(value) => {
+    // let item = catalog.get_by_index(40);
+
+    // println!("{:#?}", item);
+    match catalog.get_by_index(29) {
+        MightHaveAValue::ThereIsAValue(value) => {
             println!("Item: {:#?}", value);
         }
-        // None
-        None => {
-            println!("Nothing at that index")
+        MightHaveAValue::NoValueAvailable => {
+            println!("No value here!");
         }
     }
+
 
 }
