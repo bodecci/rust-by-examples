@@ -90,6 +90,19 @@ fn main() {
     catalog.add(podcast);
     catalog.add(placeholder);
 
-    println!("{:#?}", catalog)
+    // running catalog.items.get(0), give an output with the built in Some like
+    // Some(
+    //    Audiobook { title: "An Audiobook", to take the some away, one needs to account for it with the pattern
+    // matching
+    match catalog.items.get(100) {
+        //Some(value)
+        Some(value) => {
+            println!("Item: {:#?}", value);
+        }
+        // None
+        None => {
+            println!("Nothing at that index")
+        }
+    }
 
 }
